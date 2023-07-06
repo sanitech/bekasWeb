@@ -1,0 +1,169 @@
+.desktop-1 {
+  position: absolute;
+  background-color: #ffffff;
+  padding: 0px;
+}
+.rectangle1 {
+  background-color: #edede6;
+  height: 40px;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.rectangle2 {
+  background-color: #ffffff;
+  height: 55px;
+  width: 100%;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  position: absolute;
+  top: 35px;
+  left: 0px;
+}
+.home {
+  color: #000000;
+  text-align: center;
+  vertical-align: text-top;
+  font-size: 17px;
+  font-family: Poppins;
+  line-height: auto;
+  border-style: hidden;
+  outline: none;
+  left: 977px;
+  top: 51px;
+  position: absolute;
+  width: 52px;
+}
+.products {
+  color: #000000;
+  text-align: center;
+  vertical-align: text-top;
+  font-size: 17px;
+  font-family: Poppins;
+  left: 1061px;
+  top: 51px;
+  width: 77px;
+  height: 26px;
+  position: absolute;
+  line-height: auto;
+  border-style: hidden;
+  outline: none;
+}
+.aboutus {
+  color: #000000;
+  text-align: center;
+  vertical-align: text-top;
+  font-size: 17px;
+  font-family: Poppins;
+  left: 1167px;
+  top: 51px;
+  width: 77px;
+  height: 26px;
+  position: absolute;
+  line-height: auto;
+  border-style: hidden;
+  outline: none;
+}
+.contactus {
+  color: #000000;
+  text-align: center;
+  vertical-align: text-top;
+  font-size: 17px;
+  font-family: Poppins;
+  left: 1282px;
+  top: 51px;
+  width: 96px;
+  height: 26px;
+  position: absolute;
+  line-height: auto;
+  border-style: hidden;
+  outline: none;
+}
+.-251-116-670560 {
+  color: #000000;
+  text-align: center;
+  vertical-align: text-top;
+  font-size: 17px;
+  font-family: Poppins;
+  left: 1119px;
+  top: 5px;
+  width: 146px;
+  height: 26px;
+  position: absolute;
+  line-height: auto;
+  border-style: hidden;
+  outline: none;
+}
+.14 {
+  height: 925px;
+  width: 1440px;
+  top: 99px;
+  left: 0px;
+  position: absolute;
+}
+.undraw_science_re_mnnr1 {
+  height: 641px;
+  width: 828px;
+  left: 612px;
+  top: 133px;
+  position: absolute;
+}
+.group17 {
+  width: 467px;
+  height: 187px;
+  top: 339px;
+  left: 52px;
+  position: absolute;
+}
+.bekaschemicals {
+  color: #000000;
+  text-align: center;
+  vertical-align: text-top;
+  font-size: 40px;
+  font-family: Poppins;
+  left: 52px;
+  top: 339px;
+  width: 361px;
+  height: 60px;
+  position: absolute;
+  line-height: auto;
+  border-style: hidden;
+  outline: none;
+}
+.bekaschemicalsplcisoneoftheleadingmanufacturingcompanyinthesectorofsoapsanddetergentsinethiopia. {
+  color: #000000;
+  text-align: left;
+  vertical-align: text-top;
+  font-size: 19px;
+  font-family: Poppins;
+  left: 52px;
+  top: 413px;
+  width: 467px;
+  height: 113px;
+  position: absolute;
+  line-height: auto;
+  border-style: hidden;
+  outline: none;
+}
+.bekaschemicals3 {
+  color: #000000;
+  text-align: center;
+  vertical-align: text-top;
+  font-size: 25px;
+  font-family: Roboto;
+  left: 52px;
+  top: 48px;
+  width: 203px;
+  height: 29px;
+  position: absolute;
+  line-height: auto;
+  border-style: hidden;
+  outline: none;
+}
+.logo1 {
+  height: 175px;
+  width: 158px;
+  left: 86px;
+  top: 155px;
+  position: absolute;
+}
