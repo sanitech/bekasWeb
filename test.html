@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome</title>
+  </head>
+  <style>
+    .product {
+      height: 370px;
+      width: 300px;
+      border: 1px solid black;
+      overflow: hidden;
+      position: relative;
+    }
+    .pimg {
+      height: 370px;
+      width: 100%;
+    }
+    .pimg img {
+      width: 100%;
+      height: 100%;
+      transition: 0.5s;
+    }
+    .disc {
+      height: 0px;
+      position: absolute;
+      bottom: 0px;
+      width: 100%;
+      /* padding: 10px; */
+      background-color: rgb(83, 106, 255);
+      transition: 0.5s;
+    }
+    .product:hover .disc {
+      height: 90px;
+    }
+    .product:hover .pimg img {
+      transform: scale(1.1);
+    }
+  </style>
+  <body>
+    <div class="product">
+      <div class="pimg">
+        <img
+          src="assets/images/356990761_572437858392997_3714392916460474474_n.jpg"
+          alt=""
+        />
+      </div>
+      <div class="disc">
+        <p class="title">Product Title</p>
+        Lorem ipsum dolor sit.
+      </div>
+    </div>
+  </body>
+</html>
