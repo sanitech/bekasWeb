@@ -31,16 +31,22 @@ hr {
   margin: auto;
   border: 1px solid rgb(240, 239, 239);
 }
+.logo {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 20px;
+}
 .about h2 {
   font-size: 10px;
 }
 .about-info {
   height: 25px;
-  background-color: #edede7;
+  /* background-color: #edede7; */
+  background-color: #ffffff;
   display: flex;
   justify-content: end;
   align-items: center;
-  z-index: -1;
+  transition: all 0.3s ease-in-out;
 }
 .about-info ul {
   display: flex;
@@ -61,15 +67,19 @@ hr {
   align-items: center;
   background-color: #ffffff;
   height: 55px;
-  width: 100%;
-  filter: drop-shadow(0px 6px 10px rgba(0, 0, 0, 0.25));
-  padding: 0 30px;
+  filter: drop-shadow(0px 15px 20px rgba(0, 0, 0, 0.119));
+  padding: 0 50px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 .links {
   display: flex;
 }
 .links li {
   padding: 0 10px;
+  font-weight: bold;
+  font-size: 17px;
 }
 
 .slider {
@@ -286,7 +296,6 @@ section {
   padding: 50px 35px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
-  z-index: 100;
 }
 .info-contact h2 {
   margin-bottom: 15px;
