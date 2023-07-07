@@ -44,13 +44,21 @@ hr {
   /* background-color: #edede7; */
   background-color: #ffffff;
   display: flex;
-  justify-content: end;
+  justify-content: center;
   align-items: center;
   transition: all 0.3s ease-in-out;
 }
 .about-info ul {
   display: flex;
   justify-content: space-between;
+}
+.about-info ul .phone-number {
+  width: 0px;
+  display: none;
+  background-color: #3d1f90;
+}
+.open-phone {
+  /* display: block; */
 }
 .about-info ul li {
   margin: 0 10px;
