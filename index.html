@@ -17,6 +17,11 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div class="about-info">
@@ -44,14 +49,14 @@
     <nav class="nav-bar">
       <div class="logo">bekas Chemicals</div>
       <ul class="links">
-        <li><a href="#">Home</a></li>
+        <li><a href="#home" class="active">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#service">Services</a></li>
         <li><a href="#product">Products</a></li>
         <li><a href="#contact">Contact us</a></li>
       </ul>
     </nav>
-    <hero>
+    <section id="home">
       <div class="hero">
         <div class="wrap">
           <div class="slider">
@@ -70,7 +75,7 @@
           </div>
         </div>
       </div>
-    </hero>
+    </section>
     <section id="about">
       <div class="content-title">About Us</div>
       <div class="animate__animated animate__fadeInDown about-content">
@@ -97,6 +102,9 @@
         </div>
       </div>
     </section>
+    <!-- about end -->
+
+    <!-- service start -->
     <section id="service">
       <div class="content-title">Services</div>
 
@@ -158,6 +166,8 @@
         </div>
       </div>
     </section>
+    <!-- service end -->
+    <!-- product start -->
     <section id="product">
       <div class="content-title">Our Products</div>
       <div class="filter">
@@ -174,67 +184,14 @@
           <input
             type="text"
             name=""
-            id=""
+            id="searchQuery"
             class="search"
             placeholder="search"
           />
         </div>
       </div>
-      <div class="product">
-        <div class="products-content">
-          <img src="assets/images/undraw_Science_re_mnnr.png" alt="" />
-          <div class="description">
-            <div class="d-info">
-              <p class="p-title">Products title</p>
-              <p class="p-disc">Products description animation</p>
-            </div>
-          </div>
-        </div>
-        <div class="products-content">
-          <img src="assets/images/undraw_Science_re_mnnr.png" alt="" />
-          <div class="description">
-            <div class="d-info">
-              <p class="p-title">Products title</p>
-              <p class="p-disc">Products description animation</p>
-            </div>
-          </div>
-        </div>
-        <div class="products-content">
-          <img src="assets/images/undraw_Science_re_mnnr.png" alt="" />
-          <div class="description">
-            <div class="d-info">
-              <p class="p-title">Products title</p>
-              <p class="p-disc">Products description animation</p>
-            </div>
-          </div>
-        </div>
-        <div class="products-content">
-          <img src="assets/images/undraw_Science_re_mnnr.png" alt="" />
-          <div class="description">
-            <div class="d-info">
-              <p class="p-title">Products title</p>
-              <p class="p-disc">Products description animation</p>
-            </div>
-          </div>
-        </div>
-        <div class="products-content">
-          <img src="assets/images/undraw_Science_re_mnnr.png" alt="" />
-          <div class="description">
-            <div class="d-info">
-              <p class="p-title">Products title</p>
-              <p class="p-disc">Products description animation</p>
-            </div>
-          </div>
-        </div>
-        <div class="products-content">
-          <img src="assets/images/undraw_Science_re_mnnr.png" alt="" />
-          <div class="description">
-            <div class="d-info">
-              <p class="p-title">Products title</p>
-              <p class="p-disc">Products description animation</p>
-            </div>
-          </div>
-        </div>
+      <div class="product" id="product_filter">
+        <!-- product from json -->
       </div>
     </section>
     <br />
@@ -344,10 +301,23 @@
         <div class="developer-copy">&#9400; x IT and business solution</div>
       </div>
     </footer>
+    <div class="product-preview" id="preview_container" onclick="closePre()">
+      <img src="" alt="" id="product_preview" onClick="donClose(event)" />
+      <div class="close-btn" onclick="closePre()">
+        <i class="bi bi-x-lg"></i>
+      </div>
+    </div>
+
+    <script src="assets/js/app.js" defer></script>
     <script>
       const pro = document.getElementById("productsList");
       const com = document.getElementById("company");
+      const prod = document.getElementById("product_filter");
       const social = document.getElementById("socialMedia");
+      const preview = document.getElementById("product_preview");
+      const previewContainer = document.getElementById("preview_container");
+      // const query = document.getElementById("searchQuery");
+      const closePreview = document.querySelector(".close-btn");
       productCategories.map((item) => {
         pro.innerHTML += `<li><a href="" class="list">${item}</a></li>`;
       });
@@ -355,8 +325,48 @@
         com.innerHTML += `<li><a href="${item.link}" class="list">${item.title}</a></li>`;
       });
       socialMedia.map((item) => {
-        social.innerHTML += `<li><a href="#" class="list"><i class="${item}"></i></a></li>`;
+        social.innerHTML += `<li><a href="${item.link}" class="list" target="_blank"><i class="${item.icon}"></i></a></li>`;
       });
+      const fetchProduct = (event) => {
+        products = product.filter((eventData) => {
+          if (event === "") {
+            return eventData;
+          } else if (
+            eventData.productName.toLowerCase().includes(event.toLowerCase())
+          ) {
+            return eventData;
+          }
+        });
+        let display = products.map((item) => {
+          return `<div class="products-content"> \
+                    <img src="${item.img}" alt="${item.productName}" onclick="previewProducts('${item.img}')" /> \
+                      <div class="description"> \
+                        <div class="d-info"> \
+                            <p class="p-title">${item.productName}</p> \
+                            <p class="p-disc">${item.description}</p> \
+                        </div>\
+                      </div> \
+                    </div>`;
+        });
+        prod.innerHTML = display;
+      };
+
+      fetchProduct("");
+
+      $("#searchQuery").on("input", (event) => {
+        search = $("#searchQuery").val();
+        console.log(search);
+        fetchProduct(search);
+      });
+      const previewProducts = (image) => {
+        preview.src = image;
+        previewContainer.classList.add("open-preview");
+      };
+      const closePre = (image) =>
+        previewContainer.classList.remove("open-preview");
+      const donClose = (e) => {
+        e.stopPropagation();
+      };
     </script>
   </body>
 </html>
