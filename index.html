@@ -55,6 +55,7 @@
         <li><a href="#product">Products</a></li>
         <li><a href="#contact">Contact us</a></li>
       </ul>
+      <i class="bi bi-list toggle-btn" id="toggle"></i>
     </nav>
     <section id="home">
       <div class="hero">
@@ -69,7 +70,7 @@
             </div>
             <img
               class="animate__animated animate__slideInUp"
-              src="assets/images/undraw_Science_re_mnnr.png"
+              src="assets/images/mobile2.png"
               alt=""
             />
           </div>
@@ -84,7 +85,7 @@
         </div>
         <div class="about">
           <h2>Welcome to BEKAS Chemicals PLC</h2>
-          <p class="about-texts">
+          <div class="about-texts">
             Bekas Chemicals private limited company was established in 1994 and
             became operational in 1997. It is a family based company with seven
             shareholders. The company is engaged in manufacturing of synthetic
@@ -96,9 +97,19 @@
             region which is about 700 km North of Addis Ababa. Addis Ababa is a
             head office and location of putty and industrial products
             manufacturing plant whereas at Adama and Mekele; liquid, powder and,
-            bar detergents as well as industrial surfactants are produced...
-            <span class="more">More</span>
-          </p>
+            bar detergents as well as industrial surfactants are produced.Bekas
+            chemicals PLC is a company that began the business from a tiny stage
+            and currently runs with about 3.2 Million USD capital and its annual
+            turnover is also more than 10 million USD. It is a fast developing
+            company. Currently the number of staff members is about 600 (six
+            hundred). The company is also an active member of Addis Ababa
+            Chamber of Commerce, Sectorian Association, Chemical Products
+            Manufacturing Association and National Associations of Ethiopian
+            Industries. The company has implemented ISO 9001:2015 quality
+            management system and certified by the Ethiopian Conformity
+            Assessment Enterprise
+          </div>
+          <input type="checkbox" class="expand-btn" name="" id="" />
         </div>
       </div>
     </section>
@@ -170,14 +181,13 @@
     <!-- product start -->
     <section id="product">
       <div class="content-title">Our Products</div>
-      <div class="filter">
-        <ul class="filter-bg">
-          <li class="active">All</li>
-          <li>Bar Soap</li>
-          <li>Cosmetic</li>
-          <li>Industrial Surfactants</li>
-          <li>Liquid</li>
-          <li>Powder</li>
+      <button class="filter-content" id="filter-mobile">
+        <div class="filter-text"><i class="bi bi-filter"></i> Filter</div>
+      </button>
+      <div class="filter" id="filter">
+        <ul class="filter-bg" id="filterBtn">
+          <!-- <p class="">Product</p> -->
+          <!-- filter from data.js filter json -->
         </ul>
         <div class="search-box filter-bg">
           <i class="bi bi-search"></i>
@@ -190,11 +200,23 @@
           />
         </div>
       </div>
+
       <div class="product" id="product_filter">
         <!-- product from json -->
       </div>
     </section>
     <br />
+    <section id="partner">
+      <div class="content-title">Our partner</div>
+      <div class="slider-partner">
+        <div class="slider-content">
+          <img src="assets/images/partner/1.png" alt="" />
+        </div>
+        <div class="slider-content">
+          <img src="assets/images/partner/2.png" alt="" />
+        </div>
+      </div>
+    </section>
     <section id="contact">
       <div class="content-title">Contact US</div>
       <div class="contact-container">
@@ -269,23 +291,12 @@
             <div class="list-title">company</div>
             <ul id="company"></ul>
           </div>
-          <!-- <div class="pro">
-            <div class="list-title">Our service</div>
-            <ul>
-              <li>Detergent</li>
-              <li>Detergent</li>
-              <li>Detergent</li>
-              <li>Detergent</li>
-              <li>Detergent</li>
-              <li>Detergent</li>
-            </ul>
-          </div> -->
+
           <div class="pro">
-            <div class="list-title">Contact us</div>
+            <div class="list-title">Address</div>
             <p class="address">
               Addis Ababa - Head Office, <br />
               33607, AA, Ethiopia <br />
-              United States
             </p>
           </div>
         </div>
@@ -298,7 +309,7 @@
             Lorem ipsum dolor sit amet consectetur adipisicing.
           </div>
         </div>
-        <div class="developer-copy">&#9400; x IT and business solution</div>
+        <div class="developer-copy">&#9400; IX IT and business solution</div>
       </div>
     </footer>
     <div class="product-preview" id="preview_container" onclick="closePre()">
@@ -316,6 +327,7 @@
       const social = document.getElementById("socialMedia");
       const preview = document.getElementById("product_preview");
       const previewContainer = document.getElementById("preview_container");
+      const filterBtn = document.getElementById("filterBtn");
       // const query = document.getElementById("searchQuery");
       const closePreview = document.querySelector(".close-btn");
       productCategories.map((item) => {
@@ -327,18 +339,33 @@
       socialMedia.map((item) => {
         social.innerHTML += `<li><a href="${item.link}" class="list" target="_blank"><i class="${item.icon}"></i></a></li>`;
       });
-      const fetchProduct = (event) => {
+      filters.map((item) => {
+        filterBtn.innerHTML += `<li onClick="filterByProductType('${item.value}')">${item.text}</li>`;
+      });
+
+      const fetchProduct = (event, status, productCategories) => {
         products = product.filter((eventData) => {
-          if (event === "") {
+          if (
+            (event === "" && status === "search") ||
+            (status === "category" && productCategories == "all")
+          ) {
             return eventData;
           } else if (
-            eventData.productName.toLowerCase().includes(event.toLowerCase())
+            eventData.category
+              .toLowerCase()
+              .includes(productCategories.toLowerCase()) &&
+            status === "category"
+          ) {
+            return eventData;
+          } else if (
+            eventData.productName.toLowerCase().includes(event.toLowerCase()) &&
+            status === "search"
           ) {
             return eventData;
           }
         });
-        let display = products.map((item) => {
-          return `<div class="products-content"> \
+
+        const product_container = (item) => `<div class="products-content"> \
                     <img src="${item.img}" alt="${item.productName}" onclick="previewProducts('${item.img}')" /> \
                       <div class="description"> \
                         <div class="d-info"> \
@@ -347,16 +374,21 @@
                         </div>\
                       </div> \
                     </div>`;
-        });
-        prod.innerHTML = display;
+        prod.innerHTML = products
+          .map((item) => product_container(item))
+          .join("");
       };
 
-      fetchProduct("");
+      fetchProduct("", "search", "");
+
+      const filterByProductType = (category) => {
+        fetchProduct("", "category", category);
+      };
 
       $("#searchQuery").on("input", (event) => {
         search = $("#searchQuery").val();
         console.log(search);
-        fetchProduct(search);
+        fetchProduct(search, "search", "");
       });
       const previewProducts = (image) => {
         preview.src = image;

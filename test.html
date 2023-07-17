@@ -3,53 +3,54 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/data.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
   </head>
-  <style>
-    .product {
-      height: 370px;
-      width: 300px;
-      border: 1px solid black;
-      overflow: hidden;
-      position: relative;
-    }
-    .pimg {
-      height: 370px;
-      width: 100%;
-    }
-    .pimg img {
-      width: 100%;
-      height: 100%;
-      transition: 0.5s;
-    }
-    .disc {
-      height: 0px;
-      position: absolute;
-      bottom: 0px;
-      width: 100%;
-      /* padding: 10px; */
-      background-color: rgb(83, 106, 255);
-      transition: 0.5s;
-    }
-    .product:hover .disc {
-      height: 90px;
-    }
-    .product:hover .pimg img {
-      transform: scale(1.1);
-    }
-  </style>
   <body>
-    <div class="product">
-      <div class="pimg">
-        <img
-          src="assets/images/356990761_572437858392997_3714392916460474474_n.jpg"
-          alt=""
-        />
-      </div>
-      <div class="disc">
-        <p class="title">Product Title</p>
-        Lorem ipsum dolor sit.
-      </div>
+    <div class="product" id="product_filter">
+      <!-- product from json -->
     </div>
+    <script>
+      const fetchProduct = (event) => {
+        products = product.filter((eventData) => {
+          if (event === "") {
+            return eventData;
+          } else if (
+            eventData.productName.toLowerCase().includes(event.toLowerCase())
+          ) {
+            return eventData;
+          }
+        });
+        let display = products
+          .map((item) => {
+            return `<div class="products-content"> \
+                    <img src="${item.img}" alt="${item.productName}" onclick="previewProducts('${item.img}')" /> \
+                      <div class="description"> \
+                        <div class="d-info"> \
+                            <p class="p-title">${item.productName}</p> \
+                            <p class="p-disc">${item.description}</p> \
+                        </div>\
+                      </div> \
+                    </div>`;
+          })
+          .join("");
+        console.log(display);
+
+        // prod.innerHTML = display;
+      };
+      fetchProduct("");
+
+      $("#searchQuery").on("input", (event) => {
+        search = $("#searchQuery").val();
+        console.log(search);
+        fetchProduct(search);
+      });
+    </script>
   </body>
 </html>

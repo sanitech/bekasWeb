@@ -18,7 +18,7 @@ const product = [
     productName: "prod",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odit provident, velit consectetur deserunt mollitia pariatur quo dicta commodi praesentium, accusantium doloremque modi, unde molestiae harum aliquam vel animi at?",
-    category: "Bar Soap",
+    category: "Powder",
     available: {
       halfKg: "12pcs",
       oneKg: "12pcs",
@@ -32,7 +32,7 @@ const product = [
     productName: "name",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odit provident, velit consectetur deserunt mollitia pariatur quo dicta commodi praesentium, accusantium doloremque modi, unde molestiae harum aliquam vel animi at?",
-    category: "Bar Soap",
+    category: "Liquid",
     available: {
       halfKg: "12pcs",
       oneKg: "12pcs",
@@ -46,7 +46,7 @@ const product = [
     productName: "products",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odit provident, velit consectetur deserunt mollitia pariatur quo dicta commodi praesentium, accusantium doloremque modi, unde molestiae harum aliquam vel animi at?",
-    category: "Bar Soap",
+    category: "Cosmetic",
     available: {
       halfKg: "12pcs",
       oneKg: "12pcs",
@@ -164,5 +164,31 @@ const socialMedia = [
     icon: "bi bi-tiktok",
 
     link: "https://www.facebook.com/Bekaschemicals/",
+  },
+];
+const filters = [
+  {
+    text: "All",
+    value: "all",
+  },
+  {
+    text: "Bar Soap",
+    value: "Bar Soap",
+  },
+  {
+    text: "Cosmetic",
+    value: "Cosmetic",
+  },
+  {
+    text: "Industrial Surfactants",
+    value: "Industrial",
+  },
+  {
+    text: "Liquid",
+    value: "Liquid",
+  },
+  {
+    text: "Powder",
+    value: "Powder",
   },
 ];

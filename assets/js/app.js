@@ -1,5 +1,8 @@
 let section = document.querySelectorAll("section");
 let navLinks = document.querySelectorAll(".links li a");
+let link = document.querySelector(".links");
+let filter = document.querySelector(".filter");
+let links = document.querySelector(".links li");
 
 window.onscroll = () => {
   section.forEach((sec) => {
@@ -14,8 +17,18 @@ window.onscroll = () => {
         document
           .querySelector(".links li a[href*=" + id + "]")
           .classList.add("active");
+        link.classList.remove("open-toggle");
+
         console.log(id);
       });
     }
   });
 };
+const toggle = document.getElementById("toggle");
+const openFilter = document.getElementById("filter-mobile");
+toggle.addEventListener("click", () => {
+  link.classList.toggle("open-toggle");
+});
+openFilter.addEventListener("click", () => {
+  filter.classList.toggle("open-filter");
+});
